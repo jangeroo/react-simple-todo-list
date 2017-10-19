@@ -9,22 +9,19 @@ class App extends Component {
         this.state = {items: []}
     }
     
-    componentDidMount() {
-        ['one', 'two', 'three', 'four'].map(this.addItem)
-        setInterval(this.addItem, 1000, 'interval item')
-    }
-    
     addItem = item => {
         this.setState(st => ({items: st.items.concat(item)}))
     }
     
+    clickFunction = () => {this.addItem(this.input.value)}
+
     displayItems = item => (<li>{item}</li>);
 
     render() {
         return (
             <div>
-                <input/>
-                <button></button>
+                <input ref={r => this.input = r}/>
+                <button onClick={this.clickFunction}>Add</button>
                 <ul>
                     {this.state.items.map(this.displayItems)}
                 </ul>
