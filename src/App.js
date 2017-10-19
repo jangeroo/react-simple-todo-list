@@ -13,15 +13,20 @@ class App extends Component {
         this.setState(st => ({items: st.items.concat(item)}))
     }
     
-    clickFunction = () => {this.addItem(this.input.value)}
+    submitFunction = (event) => {
+        event.preventDefault();
+        this.addItem(this.input.value);
+    }
 
     displayItems = item => (<li>{item}</li>);
 
     render() {
         return (
             <div>
-                <input ref={r => this.input = r}/>
-                <button onClick={this.clickFunction}>Add</button>
+                <form ref={r => this.form = r} onSubmit={this.submitFunction}>
+                    <input ref={r => this.input = r}/>
+                    <button>Add</button>
+                </form>
                 <ul>
                     {this.state.items.map(this.displayItems)}
                 </ul>
