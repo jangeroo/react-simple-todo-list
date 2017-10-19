@@ -4,16 +4,29 @@ import './App.css';
 
 class App extends Component {
 
-displayItems = (item) => (<li>{item}</li>);
+    constructor() {
+        super();
+        this.state = {items: []}
+    }
+    
+    componentDidMount() {
+        ['one', 'two', 'three', 'four'].map(this.addItem)
+        setInterval(this.addItem, 1000, 'interval item')
+    }
+    
+    addItem = item => {
+        this.setState(st => ({items: st.items.concat(item)}))
+    }
+    
+    displayItems = item => (<li>{item}</li>);
 
     render() {
-        var items = ['one', 'two', 'three'];
         return (
             <div>
                 <input/>
                 <button></button>
                 <ul>
-                    {items.map(this.displayItems)}
+                    {this.state.items.map(this.displayItems)}
                 </ul>
             </div>
         );
