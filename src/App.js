@@ -16,6 +16,7 @@ class App extends Component {
     submitFunction = (event) => {
         event.preventDefault();
         this.addItem(this.input.value);
+        this.form.reset()
     }
 
     displayItems = item => (<li>{item}</li>);
