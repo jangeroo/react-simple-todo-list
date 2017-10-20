@@ -25,14 +25,23 @@ class App extends Component {
         this.setState(st => ({items: []}))
     }
 
+    reverseList = () => {
+        this.setState(st => ({items: st.items.reverse()}))
+    }
+
     render() {
         return (
             <div>
                 <form ref={r => this.form = r} onSubmit={this.submitFunction}>
                     <input ref={r => this.input = r}/>
-                    <button type="submit">Add</button>
-                    <button type='button' onClick={this.clear}>Clear</button>
+                    <button type='submit'>Add</button>
                 </form>
+
+                <div>
+                    <button type='button' onClick={this.clear}>Clear</button>
+                    <button type='button' onClick={this.reverseList}>Reverse</button>
+                </div>
+
                 <ul>
                     {this.state.items.map(this.displayItems)}
                 </ul>
