@@ -29,6 +29,10 @@ class App extends Component {
         this.setState(st => ({items: st.items.reverse()}))
     }
 
+    removeFirst = () => {
+        this.setState(st => ({items: st.items.slice(1, st.items.length)}))
+    }
+
     render() {
         return (
             <div>
@@ -40,6 +44,7 @@ class App extends Component {
                 <div>
                     <button type='button' onClick={this.clear}>Clear</button>
                     <button type='button' onClick={this.reverseList}>Reverse</button>
+                    <button type='button' onClick={this.removeFirst}>Remove First Item</button>
                 </div>
 
                 <ul>
